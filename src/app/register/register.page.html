@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<br>
+<br>
+<br>
+<ion-content>
+  <ion-card>
+
+    <ion-card-header>
+      <img src="../../assets/log.jpg" alt="Login.jpg">
+      <ion-card-subtitle></ion-card-subtitle>
+      <ion-card-title style="font-family: sans-serif; text-align: center;"> <b>Mini-Projet : Angular & Ionic</b>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input [(ngModel)]="user.email" placeholder="Enter Your Email"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input [(ngModel)]="user.password" placeholder="Enter Your Password" type="password"></ion-input>
+      </ion-item>
+      <br>
+      
+      <ion-button expand="block" color="secondary" (click)="Registre(user)">Registre</ion-button>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

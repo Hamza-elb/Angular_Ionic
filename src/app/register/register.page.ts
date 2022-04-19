@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Router} from '@angular/router';
-
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { User } from '../models/user.model';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
-
+import { User } from '../models/user.model';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class RegisterPage implements OnInit {
 
   user = {} as User;
+  
+
 
   constructor(private tst : ToastController,
     private loading : LoadingController,
@@ -25,37 +24,37 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  async LogIn(user : User) {
-    
+   async Registre(user : User){
+ 
     if(this.Validation()){
+
       let l = this.loading.create({
         message: "Loading..."
       });
       (await l).present();
 
-      try{
-
-        await this.ngFireAuth.signInWithEmailAndPassword(user.email, user.password).then(data => {
-
-            console.log(data);
-
-            //redirectTo
-            this.navCtrl.navigateRoot("home");
+        try{
+         await this.ngFireAuth.createUserWithEmailAndPassword(user.email, user.password).then(data => {
+           console.log(data);
 
 
-        });
-      }  catch(e){this.showToast(e)};
+           //redirectTo Home page
+           this.navCtrl.navigateRoot("home");
+         });
+
+        }
+        catch(e){this.showToast(e)};
 
         (await l).dismiss();
-    }
-
      
 
+
+
+
+    }
+
+
   }
-
-
-
-  
 
   Validation(){
     if(!this.user.email){
@@ -78,6 +77,12 @@ export class LoginPage implements OnInit {
       duration: 3000
 
     }).then(toastData => toastData.present());
+  }
+
+  Clear(){
+    this.user.email = '';
+    this.user.password = '';
+
   }
 
 }
