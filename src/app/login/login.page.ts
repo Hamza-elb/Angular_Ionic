@@ -23,6 +23,10 @@ export class LoginPage implements OnInit {
     private navCtrl : NavController) { }
 
   ngOnInit() {
+
+    this.ngFireAuth.onAuthStateChanged((user)=>{
+      console.log(user);
+    })
   }
 
   async LogIn(user : User) {

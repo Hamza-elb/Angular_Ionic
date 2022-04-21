@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>add-data</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="main-section">
+<div class="form ion-padding ion-margin">
+  <ion-input placeholder="Title" [(ngModel)]="Title"></ion-input>
+  <ion-input placeholder="prix" [(ngModel)]="prix"></ion-input>
+  <ion-input placeholder="duree" [(ngModel)]="duree"></ion-input>
+  <ion-input placeholder="description" [(ngModel)]="description"></ion-input>
+
+  <ion-button color="dark" (click)="addFormations()">Add</ion-button>
+
+</div>
+
+</div>
+
+
+</ion-content>

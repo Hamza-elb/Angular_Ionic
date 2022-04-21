@@ -1,27 +1,42 @@
-#container {
-  text-align: center;
+.main-div{
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  h1{
+    font: size 1.7em;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+
+.list{
+  margin-top : 30px;
+  ion-item : part(native){
+    padding : 0;
+  }
+  ion-item{
+    margin-top : 20px;
+    color : #676767;
+    --border-color : #ddd;
+    ion-label{
+      font-size :1.2rem;
+      font-weight : 500;
+      p{
+        font-size : 0.8rem;
+        margin-top : 5px;
+      }
+      p.expense{
+        color : blue;
+        font-weight : 700;
+      }
+     
+    }
+     p.amount{
+        color : green;
+        font-weight :700;
+      }
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+ion-fab-button{
+  position : fixed;
+  bottom : 20px;
+  right : 20px;
 }
