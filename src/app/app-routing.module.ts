@@ -28,6 +28,11 @@ const routes: Routes = [
     path: 'details/:type',
     loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   },
+  {
+    path: 'save/:type',
+    loadChildren: () => import('./save/save.module').then( m => m.SavePageModule)
+  },
+
 
 
 

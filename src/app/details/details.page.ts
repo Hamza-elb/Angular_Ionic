@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class DetailsPage implements OnInit {
 
   constructor( private route : ActivatedRoute,
     private firebaseService : FirebaseService,
+    public alertController: AlertController,
     private router : Router
     ) { 
 
@@ -35,5 +37,41 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {
   }
+
+  
+  
+  async presentAlert(id) {
+
+  
+
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: [{
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+
+            console.log('Confirm Cancel');
+          }
+
+        }, {
+          text: 'Ok',
+          handler: (res) => {
+            this.router.navigateByUrl('/save/'+id)
+            console.log('Confirm Ok',res);
+          }
+        }] 
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
 
 }

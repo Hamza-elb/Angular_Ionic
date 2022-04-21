@@ -7,8 +7,13 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class FirebaseService {
 
   collectionName = 'formation';
-
-  constructor( private firestore : AngularFirestore) { }
+  
+   userId : string;
+  constructor( private firestore : AngularFirestore,
+   
+   
+    
+    ) { }
 
   get_Formations(){
     return this.firestore.collection(this.collectionName).snapshotChanges();
@@ -28,4 +33,5 @@ return this.firestore.collection(this.collectionName).doc(id).valueChanges();
 
     return this.firestore.collection(this.collectionName).doc(id).valueChanges();
   }
+
 }
