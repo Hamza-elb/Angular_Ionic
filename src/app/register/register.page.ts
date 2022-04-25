@@ -13,7 +13,7 @@ import { User } from '../models/user.model';
 export class RegisterPage implements OnInit {
 
   user = {} as User;
-  
+   type : boolean = true;
 
 
   constructor(private tst : ToastController,
@@ -84,5 +84,16 @@ export class RegisterPage implements OnInit {
     this.user.password = '';
 
   }
+
+   fblogin(){}
+
+  twlogin(){}
+
+  glogin(){}
+
+
+changeType(){
+this.type = !this.type;
+}
 
 }

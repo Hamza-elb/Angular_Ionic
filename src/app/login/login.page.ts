@@ -8,6 +8,7 @@ import { LoadingController, NavController, ToastController } from '@ionic/angula
 
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -17,10 +18,13 @@ export class LoginPage implements OnInit {
 
   user = {} as User;
 
+  type : boolean = true;
+
   constructor(private tst : ToastController,
     private loading : LoadingController,
     private ngFireAuth :AngularFireAuth,
-    private navCtrl : NavController) { }
+    private navCtrl : NavController,
+    ) { }
 
   ngOnInit() {
 
@@ -83,5 +87,26 @@ export class LoginPage implements OnInit {
 
     }).then(toastData => toastData.present());
   }
+
+
+  changeType(){
+    this.type = !this.type;
+  }
+
+  goToForget(){
+
+  }
+
+  fblogin(){}
+
+  twlogin(){}
+
+  glogin(){}
+
+
+
+
+
+  faceLogin(){}
 
 }

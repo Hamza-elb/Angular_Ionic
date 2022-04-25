@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  Router } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
 
 import { FirebaseService } from '../firebase.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -19,15 +19,16 @@ export class HomePage {
     private firestore : AngularFirestore,
     public firebaseService: FirebaseService,
     private ngFireAuth :AngularFireAuth,
+    private router : ActivatedRoute,
+    private route : Router,
+   
     
   
     ) {
 
-          this.userId = this.ngFireAuth.currentUser;
+      
 
-
-
-    this.firebaseService.get_Formations().subscribe((res:any)=> {
+     this.firebaseService.get_Formations().subscribe((res:any)=> {
 
         this.format = res.map(e => {
           return {

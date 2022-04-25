@@ -1,35 +1,61 @@
-<ion-header>
-<ion-toolbar>
-  <ion-title>Login</ion-title>
-</ion-toolbar>
-</ion-header>
 
-<br>
-<br>
-<br>
 <ion-content>
- <ion-card>
 
-      <ion-card-header>
-        <img src="../../assets/log.jpg" alt="Login.jpg">
-        <ion-card-subtitle></ion-card-subtitle>
-        <ion-card-title style="font-family: sans-serif; text-align: center;"> <b>Mini-Projet : Angular & Ionic</b></ion-card-title>
-      </ion-card-header>
+<div class="upper">
+  <div class="icon">
+    <ion-icon name="logo-angular"></ion-icon>
+  </div>
+  <p id="login">BGHIT FORMATION APP</p>
+
+
+  <div class="middle">
+  <div class="box">
+
+    
+         <p>Please Login to your account</p>
+         <ion-item>
+          <ion-label position="floating">Email Address</ion-label>
+          <ion-input [(ngModel)]="user.email"   type="email"  name="email" placeholder="Email" required email ></ion-input>
+          <ion-icon class="ion-align-self-center" slot="end" name="mail"></ion-icon>
+         </ion-item>
+        
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input [(ngModel)]="user.password" [type]="type ? 'password' : 'text'" name="email" placeholder="Password" required email></ion-input>
+          <ion-icon class="ion-align-self-center" slot="end" name="eye-outline" (click)="changeType()"></ion-icon>
+        </ion-item>
+
+        
+        <p id="forgetPassword" (click)="goToForget()" >Forget Password </p> 
+    
       
-      <ion-card-content>
-          <ion-item>
-            <ion-input [(ngModel)]="user.email" placeholder="Enter Your Email"></ion-input>
-          </ion-item>
-          <br>
-            <ion-item>
-              <ion-input [(ngModel)]="user.password" placeholder="Enter Your Password" type="password"></ion-input>
-            </ion-item>
-      <br>
-      <ion-button expand="block" (click) = "LogIn(user)">login</ion-button>
-      <ion-button expand="block" color="secondary" [routerLink]="['/register']">Registre</ion-button>
+        <div class="btn">
+           <ion-button (click) = "LogIn(user)">Login</ion-button>
 
-      </ion-card-content>
+        </div>
+          <p id="media">Or Login using Social Media</p>
 
- </ion-card>
+
+          <div class="socizlMedia">
+            <ion-icon name="logo-facebook" (click)="fblogin()"></ion-icon>
+            <ion-icon name="logo-twitter" (click)="twlogin()"></ion-icon>
+            <ion-icon name="logo-google" (click)="glogin()"></ion-icon>
+          </div>
+          
+  </div>
+      
+
+</div>
+<div class="navigartion">
+ <p [routerLink]="['/register']">
+   Don't have an Account ? Register Now
+ </p>
+
+</div>
+
+</div>
+
+
+
 
 </ion-content>

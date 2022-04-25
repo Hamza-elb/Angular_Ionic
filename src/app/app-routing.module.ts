@@ -31,7 +31,15 @@ const routes: Routes = [
   {
     path: 'save/:type',
     loadChildren: () => import('./save/save.module').then( m => m.SavePageModule)
+  },  {
+    path: 'affiche',
+    loadChildren: () => import('./affiche/affiche.module').then( m => m.AffichePageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+
 
 
 

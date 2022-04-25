@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
+import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-details',
@@ -9,15 +10,21 @@ import { FirebaseService } from '../firebase.service';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-   Title : string;
+  Title : string;
   prix : string;
   duree : string;
   description : string;
   id : any;
+  isLoggedIn : boolean = false;
+
+  userLogged : string;
+
+  today : number = Date.now();
 
   constructor( private route : ActivatedRoute,
     private firebaseService : FirebaseService,
     public alertController: AlertController,
+    private store : AngularFirestore,
     private router : Router
     ) { 
 
@@ -35,9 +42,17 @@ export class DetailsPage implements OnInit {
     })
   }
 
-  ngOnInit() {
-  }
+ async ngOnInit() {
+    this.firebaseService.getAuth().subscribe((auth) => {
+      if (auth) {
+        this.userLogged = auth.email;
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+    });
 
+  }
   
   
   async presentAlert(id) {
@@ -46,9 +61,9 @@ export class DetailsPage implements OnInit {
 
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
+      header: 'Do you want to enroll in a '+this.duree+' '+this.Title+' course with an amount '+ this.prix +'?',
+      
+     //message: this.Title,
       buttons: [{
           text: 'Cancel',
           role: 'cancel',
@@ -60,10 +75,24 @@ export class DetailsPage implements OnInit {
 
         }, {
           text: 'Ok',
-          handler: (res) => {
-            this.router.navigateByUrl('/save/'+id)
-            console.log('Confirm Ok',res);
+          handler:async(res) => {
+            
+            this.store.collection('mycourses').add({
+              email: this.userLogged,
+              course: this.Title,
+              prix: this.prix,
+              duree : this.duree,
+              description : this.description,
+              
+
+              
+            }),
+
+            console.log('Confirm : ')
+
+              this.router.navigateByUrl('save/'+id);
           }
+        
         }] 
     });
 
@@ -72,6 +101,9 @@ export class DetailsPage implements OnInit {
     const { role } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
   }
+
+
+  
 
 
 }

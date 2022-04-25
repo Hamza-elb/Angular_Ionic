@@ -9,6 +9,9 @@ import { FirebaseService } from '../firebase.service';
   styleUrls: ['./save.page.scss'],
 })
 export class SavePage implements OnInit {
+
+  today : number = Date.now();
+
  Title: string;
  prix : string;
  duree : string;
