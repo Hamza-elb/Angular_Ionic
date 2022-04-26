@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
-import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/firestore';
+
 @Component({
   selector: 'app-affiche',
   templateUrl: './affiche.page.html',
@@ -14,13 +14,9 @@ export class AffichePage implements OnInit {
   total: any;
 
   constructor(
-     private firebaseService : FirebaseService,
-     private store : AngularFirestore,
-  ) {
+     private firebaseService : FirebaseService,)
+   {
 
-    
-      
-    
      
   this.firebaseService.getAuth().subscribe((auth) => {
 
@@ -52,20 +48,12 @@ export class AffichePage implements OnInit {
       
 
     });
-        
-      
-      
-    
   
 
    }
 
 
-  async ngOnInit() {
-
-
-    
-    
+ ngOnInit() {
 
   }
 

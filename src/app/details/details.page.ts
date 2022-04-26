@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { FirebaseService } from '../firebase.service';
-import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-details',

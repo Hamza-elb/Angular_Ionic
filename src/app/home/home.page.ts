@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import {  ActivatedRoute, Router } from '@angular/router';
-
 import { FirebaseService } from '../firebase.service';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -15,18 +12,7 @@ export class HomePage {
     to : any[]=[];
     format : any;
 
-  constructor(
-    private firestore : AngularFirestore,
-    public firebaseService: FirebaseService,
-    private ngFireAuth :AngularFireAuth,
-    private router : ActivatedRoute,
-    private route : Router,
-   
-    
-  
-    ) {
-
-      
+  constructor( public firebaseService: FirebaseService) {
 
      this.firebaseService.get_Formations().subscribe((res:any)=> {
 

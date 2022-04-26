@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
-import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { LoadingController, NavController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -8,8 +9,15 @@ import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/fir
 })
 export class ProfilePage implements OnInit {
     userLogged : string;
+    today : number = Date.now();
 
-  constructor(  private firebaseService : FirebaseService) { 
+   
+
+  constructor(  private firebaseService : FirebaseService,
+     private navCtrl : NavController,
+     private loading : LoadingController,
+     ) 
+     { 
 
      this.firebaseService.getAuth().subscribe((auth) => {
 
@@ -19,6 +27,28 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  async toFormation(){
+    
+    let l = this.loading.create({
+        message: "Loading...",
+         duration: 5000
+      });
+      (await l).present();
+     
+
+        this.navCtrl.navigateRoot("affiche");
+
+        (await l).dismiss();
+    
+
+  }
+
+
+     toOut(){
+       console.log("out")
+           this.firebaseService.grtOuts();
   }
 
 }

@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import {Router} from '@angular/router';
-
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../models/user.model';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
-
-
-
 
 @Component({
   selector: 'app-login',
@@ -46,8 +40,6 @@ export class LoginPage implements OnInit {
         await this.ngFireAuth.signInWithEmailAndPassword(user.email, user.password).then(data => {
 
             console.log(data);
-
-            //redirectTo
             this.navCtrl.navigateRoot("home");
 
 
@@ -61,9 +53,6 @@ export class LoginPage implements OnInit {
 
   }
 
-
-
-  
 
   Validation(){
     if(!this.user.email){
@@ -103,10 +92,5 @@ export class LoginPage implements OnInit {
 
   glogin(){}
 
-
-
-
-
-  faceLogin(){}
 
 }

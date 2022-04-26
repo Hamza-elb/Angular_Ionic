@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { map } from 'rxjs/operators';
+import { NavController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class FirebaseService {
    userId : string;
   constructor( private firestore : AngularFirestore,
     private ngFireAuth :AngularFireAuth,
+     private navCtrl : NavController,
    
    
     
@@ -46,6 +48,12 @@ return this.firestore.collection(this.collectionName).doc(id).valueChanges();
   grtFormationDunUser(){
       
       return this.firestore.collection(this.UserColliction).snapshotChanges();
+  }
+
+  grtOuts(){
+    return this.ngFireAuth.signOut().then(() => {
+      this.navCtrl.navigateRoot("login")
+    })
   }
 
 }
