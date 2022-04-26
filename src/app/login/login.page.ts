@@ -72,7 +72,7 @@ export class LoginPage implements OnInit {
   showToast(message: string) {
     this.tst.create({
       message: message,
-      duration: 3000
+      duration: 30000
 
     }).then(toastData => toastData.present());
   }

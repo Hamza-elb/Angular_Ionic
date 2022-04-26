@@ -20,10 +20,7 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
-  {
-    path: 'add-data',
-    loadChildren: () => import('./add-data/add-data.module').then( m => m.AddDataPageModule)
-  },
+  
   {
     path: 'details/:type',
     loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
@@ -31,7 +28,8 @@ const routes: Routes = [
   {
     path: 'save/:type',
     loadChildren: () => import('./save/save.module').then( m => m.SavePageModule)
-  },  {
+  },
+  {
     path: 'affiche',
     loadChildren: () => import('./affiche/affiche.module').then( m => m.AffichePageModule)
   },

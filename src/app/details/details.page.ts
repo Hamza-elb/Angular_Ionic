@@ -57,8 +57,6 @@ export class DetailsPage implements OnInit {
   
   async presentAlert(id) {
 
-  
-
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Do you want to enroll in a '+this.duree+' '+this.Title+' course with an amount '+ this.prix +'?',

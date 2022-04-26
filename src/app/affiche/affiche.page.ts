@@ -8,7 +8,7 @@ import { FirebaseService } from '../firebase.service';
 })
 export class AffichePage implements OnInit {
 
-  userLogged : 'hamza@gmail.com';
+  
   course : any;
   email : string;
   total: any;

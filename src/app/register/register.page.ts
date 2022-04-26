@@ -45,13 +45,8 @@ export class RegisterPage implements OnInit {
         catch(e){this.showToast(e)};
 
         (await l).dismiss();
-     
-
-
-
-
+ 
     }
-
 
   }
 
